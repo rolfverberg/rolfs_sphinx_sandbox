@@ -1,0 +1,16 @@
+name: rolfs_sphinx_sandbox
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python>=3.9,<3.11
+  - asteval==0.9.31
+  - lmfit==1.1.0
+  - matplotlib==3.9.2
+  - nexpy==1.0.9
+  - nexusformat==1.0.6
+  - numpy==1.26.4
+  - pip==24.2
+  - pydantic==2.7.3
+  - scipy==1.11.3
+  - sympy==1.12
