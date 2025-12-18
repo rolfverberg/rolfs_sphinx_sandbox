@@ -8,6 +8,8 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Grants write permissions to the job
     steps:
       - uses: actions/checkout@v4
 
