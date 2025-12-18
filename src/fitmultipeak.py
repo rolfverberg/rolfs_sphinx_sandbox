@@ -19,7 +19,7 @@ from nexusformat.nexus import (
 import numpy as np
 
 # Local modules
-from CHAP.utils.fit import FitProcessor
+from fit import FitProcessor
 
 def ran_uni(set_seed=None):
     """Create a random number distributed in the range `[-0.5, 0.5]`.
