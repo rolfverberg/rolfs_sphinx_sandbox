@@ -24,6 +24,9 @@ jobs:
           pip install sphinx # Install all necessary sphinx packages
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Install package
+        run: pip install ./src
+
       - name: Generate .rst files with sphinx-apidoc
         run: sphinx-apidoc -o docs src/
 
@@ -32,10 +35,14 @@ jobs:
           cd docs
           make html
 
+      - name: List generated files
+        run: |
+          find _build/html -type f
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/build/html # The directory where Sphinx outputted the HTML files
+          #publish_dir: docs/_build/html # The directory where Sphinx outputted the HTML files
           # Note: The 'gh-pages' branch will be created automatically if it doesn't exist.
 
