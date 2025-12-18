@@ -106,8 +106,7 @@ def rectangle(
     - `'linear'` (default) = ramp_up + ramp_down
     - `'atan'`, `'arctan`' = amplitude*(atan(arg1) + atan(arg2))/pi
     - `'erf'`              = amplitude*(erf(arg1) + erf(arg2))/2.
-    - `'logisitic'`        = amplitude*[1 - 1/(1 + exp(arg1)) -
-                             1/(1+exp(arg2))]
+    - `'logisitic'`        = amplitude*[1 - 1/(1 + exp(arg1)) - 1/(1+exp(arg2))]
 
     where ``arg1 = (x - center1)/sigma1`` and
     ``arg2 = -(x - center2)/sigma2``.
@@ -188,7 +187,6 @@ class CHAPBaseModel(BaseModel):
         """Modify the Pydantic Basemodel call to model_dump to
         incorporate the private class attribute "_exclude" to exclude
         certain class fields from the model dump to dict
-
         """
         if hasattr(self, '_exclude'):
             kwargs['exclude'] = self._merge_exclude(
@@ -199,7 +197,6 @@ class CHAPBaseModel(BaseModel):
         """Modify the Pydantic Basemodel call to model_dump_json to
         incorporate the private class attribute "_exclude" to exclude
         certain class fields from the model dump to json.
-
         """
         # Third party modules
         from json import dumps
