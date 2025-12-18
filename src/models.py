@@ -34,6 +34,14 @@ def constant(x, c=0.0):
     """Return a linear function.
 
     constant(x, c) = c
+
+    :param x: The x-coordinates.
+    :type x: numpy.ndarray
+    :param c: The constant.
+    :type c: float
+    :return: The constant function results.
+    :type: numpy.ndarray
+
     """
     return c*np.ones((x.size))
 
@@ -177,12 +185,22 @@ class CHAPBaseModel(BaseModel):
         return self.model_dump(*args, **kwargs)
 
     def model_dump(self, *args, **kwargs):
+        """Modify the Pydantic Basemodel call to model_dump to
+        incorporate the private class attribute "_exclude" to exclude
+        certain class fields from the model dump to dict
+
+        """
         if hasattr(self, '_exclude'):
             kwargs['exclude'] = self._merge_exclude(
                 None if kwargs is None else kwargs.get('exclude'))
         return self._serialize(super().model_dump(*args, **kwargs))
 
     def model_dump_json(self, *args, **kwargs):
+        """Modify the Pydantic Basemodel call to model_dump_json to
+        incorporate the private class attribute "_exclude" to exclude
+        certain class fields from the model dump to json.
+
+        """
         # Third party modules
         from json import dumps
 
