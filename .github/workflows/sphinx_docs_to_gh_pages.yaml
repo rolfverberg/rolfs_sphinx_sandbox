@@ -34,11 +34,14 @@ jobs:
         #run: |
         #  cd docs
         #  make html
-        run: make html
+        run: |
+          make html
         working-directory: ./docs
 
       - name: List generated files
         run: |
+          pwd
+          ls -lha
           find _build/html -type f
 
       - name: Deploy to GitHub Pages
