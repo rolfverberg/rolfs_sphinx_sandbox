@@ -9,8 +9,8 @@ Rolf's Sphinx sandbox
 =====================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Installation:
+   :maxdepth: 1
+   :caption: Installation
 
    installation
 
@@ -20,6 +20,7 @@ Rolf's Sphinx sandbox
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+   :caption: Reference Guide
 
    dev_guide
