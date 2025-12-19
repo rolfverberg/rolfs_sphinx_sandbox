@@ -10,6 +10,16 @@ Rolf's Sphinx sandbox
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Installation:
+
+    installation
+
+
+.. include:: inline.md
+   :parser: myst_parser.sphinx_
+
+
+.. toctree::
+   :maxdepth: 2
 
    dev_guide

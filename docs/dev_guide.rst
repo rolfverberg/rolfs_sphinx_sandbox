@@ -1,8 +1,6 @@
-Reference Guide
-===============
-
 .. toctree::
    :maxdepth: 4
+   :caption: Reference Guide:
 
    fit
    fitmultipeak
