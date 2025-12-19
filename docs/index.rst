@@ -12,7 +12,7 @@ Rolf's Sphinx sandbox
    :maxdepth: 2
    :caption: Installation:
 
-    installation
+   installation
 
 
 .. include:: inline.md
