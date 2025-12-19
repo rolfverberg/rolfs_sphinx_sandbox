@@ -3,13 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:orphan:
-
 Rolf's Sphinx sandbox
 =====================
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: Installation
 
    installation
@@ -23,4 +21,4 @@ Rolf's Sphinx sandbox
    :hidden:
    :caption: Reference Guide
 
-   dev_guide
+   api_documentation
