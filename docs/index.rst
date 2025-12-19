@@ -20,7 +20,7 @@ Rolf's Sphinx sandbox
 
 
 .. toctree::
-   :maxdepth: 1
+   :hidden:
    :caption: Reference Guide
 
    dev_guide

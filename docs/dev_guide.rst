@@ -1,6 +1,9 @@
+*****************
+API documentation
+*****************
+
 .. toctree::
-   :maxdepth: 4
-   :caption: Reference Guide:
+   :titlesonly:
 
    fit
    fitmultipeak
