@@ -24,7 +24,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.9,<3.11',
+    python_requires='3.12',
     install_requires=[
         "asteval==1.0.8",
         "lmfit==1.3.4",
