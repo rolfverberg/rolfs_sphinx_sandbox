@@ -22,7 +22,7 @@ extensions = [
     'myst_parser',
 #    'sphinx.ext.autodoc',
     'autodoc2',
-    'sphinxarg.ext'
+#    'sphinxarg.ext'
     'sphinx.ext.githubpages',
 ]
 autodoc2_packages = ['../src']
