@@ -9,50 +9,54 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Grants write permissions to the job
+#      contents: write # Grants write permissions to the job
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+#      - name: Set up Python
+#        uses: actions/setup-python@v5
+#        with:
+#          python-version: '3.12'
+#
+#      - name: Install dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install sphinx # Install all necessary sphinx packages
+#          #pip install python-docs-theme # Python Documentation theme
+#          pip install sphinx-rtd-theme # Read the Docs theme
+#          pip install myst-parser # Allow adding a Markdown (.md) file
+#                                  # to a toctree in an reStructuredText
+#                                  # (.rst) file
+#          pip install -r requirements.txt
+#
+#      - name: Install package
+#        run: pip install -e .
+#
+#      - name: Generate .rst files with sphinx-apidoc
+#        run: sphinx-apidoc -o docs src/
+#
+#      - name: Build Sphinx HTML documentation
+#        run: |
+#          make html
+#        working-directory: ./docs
+#
+#      - name: List generated files
+#        run: |
+#          pwd
+#          ls -lha
+#          find ./docs/_build/html -type f
+#
+#      - name: Deploy to GitHub Pages
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./docs/_build/html # The directory where Sphinx outputted the HTML files
+#          # Note: The 'gh-pages' branch will be created automatically if it doesn't exist.
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install sphinx # Install all necessary sphinx packages
-          #pip install python-docs-theme # Python Documentation theme
-          pip install sphinx-rtd-theme # Read the Docs theme
-          pip install myst-parser # Allow adding a Markdown (.md) file
-                                  # to a toctree in an reStructuredText
-                                  # (.rst) file
-          pip install -r requirements.txt
-
-      - name: Install package
-        run: pip install -e .
-
-      - name: Generate .rst files with sphinx-apidoc
-        run: sphinx-apidoc -o docs src/
-
-      - name: Build Sphinx HTML documentation
-        #run: |
-        #  cd docs
-        #  make html
-        run: |
-          make html
-        working-directory: ./docs
-
-      - name: List generated files
-        run: |
-          pwd
-          ls -lha
-          find ./docs/_build/html -type f
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/_build/html # The directory where Sphinx outputted the HTML files
-          # Note: The 'gh-pages' branch will be created automatically if it doesn't exist.
-
+    - name: Build and deploy docs
+      id: deployment
+      uses: sphinx-notes/pages@v3
+      with:
+        checkout: false

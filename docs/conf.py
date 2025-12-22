@@ -20,12 +20,15 @@ author = 'Rolf Verberg'
 
 extensions = [
     'myst_parser',
-    'sphinx.ext.autodoc',
+#    'sphinx.ext.autodoc',
+    'autodoc2',
+    'sphinxarg.ext'
     'sphinx.ext.githubpages',
 ]
-
+autodoc2_packages = ['../src']
+autodoc2_render_plugin = 'myst'
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-source_suffix = ['.rst', '.md']
+#source_suffix = ['.rst', '.md']
 templates_path = ['_templates']
 
 
@@ -38,3 +41,11 @@ html_theme = 'sphinx_rtd_theme' # Read the Docs theme
 #html_theme = 'sphinxdoc'    # Sphinx ducumentation theme
 #html_static_path = ['_static']
 html_static_path = []
+html_show_copyright = False
+#html_sidebars = {
+#    '**': ['globaltoc.html',
+#           'localtoc.html',
+#           'relations.html',
+#           'searchbox.html']
+#}
+
