@@ -5,16 +5,16 @@ on:
     branches:
       - main # or master
 
-jobs:
-  build_and_deploy:
-    runs-on: ubuntu-latest
-    permissions:
+#jobs:
+#  build_and_deploy:
+#    runs-on: ubuntu-latest
+#    permissions:
 #      contents: write # Grants write permissions to the job
-      pages: write
-      id-token: write
-    steps:
-      - uses: actions/checkout@v4
-
+#      pages: write
+#      id-token: write
+#    steps:
+#      - uses: actions/checkout@v4
+#
 #      - name: Set up Python
 #        uses: actions/setup-python@v5
 #        with:
@@ -55,6 +55,17 @@ jobs:
 #          publish_dir: ./docs/_build/html # The directory where Sphinx outputted the HTML files
 #          # Note: The 'gh-pages' branch will be created automatically if it doesn't exist.
 
+jobs:
+  pages:
+    runs-on: ubuntu-20.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+    - uses: actions/checkout@v3
     - name: Build and deploy docs
       id: deployment
       uses: sphinx-notes/pages@v3
