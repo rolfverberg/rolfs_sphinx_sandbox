@@ -21,4 +21,4 @@ Rolf's Sphinx sandbox
    :hidden:
    :caption: Reference Guide
 
-   api_documentation
+   modules
