@@ -18,7 +18,6 @@ Rolf's Sphinx sandbox
 
 
 .. toctree::
-   :hidden:
    :caption: Reference Guide
 
    modules
