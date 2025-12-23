@@ -23,7 +23,7 @@ extensions = [
 #    'sphinx.ext.autodoc',
     'autodoc2',
 #    'sphinxarg.ext'
-    'sphinx.ext.githubpages',
+#    'sphinx.ext.githubpages',
 ]
 #autodoc_mock_imports = ['any_package_like_numpy_or_list_of_packages']
 autodoc2_packages = ['../src']

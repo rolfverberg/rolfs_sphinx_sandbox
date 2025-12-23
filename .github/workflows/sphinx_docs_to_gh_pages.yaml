@@ -22,11 +22,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install sphinx # Install all necessary sphinx packages
-          #pip install python-docs-theme # Python Documentation theme
-          pip install sphinx-rtd-theme # Read the Docs theme
+          pip install sphinx-autodoc2 # Allow autodoc2 usage
           pip install myst-parser # Allow adding a Markdown (.md) file
                                   # to a toctree in an reStructuredText
                                   # (.rst) file
+          #pip install python-docs-theme # Python Documentation theme
+          pip install sphinx-rtd-theme # Read the Docs theme
           pip install -r requirements.txt
 
       - name: Install package
