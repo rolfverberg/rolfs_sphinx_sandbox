@@ -46,6 +46,7 @@ jobs:
           pwd
           ls -lha
           find ./docs/_build/html -type f
+          more /home/runner/work/rolfs_sphinx_sandbox/rolfs_sphinx_sandbox/docs/modules.rst
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
