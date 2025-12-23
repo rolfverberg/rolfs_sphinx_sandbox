@@ -5,11 +5,13 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write # Grants write permissions to the job
+
 jobs:
-  build_and_deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Grants write permissions to the job
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,9 +41,8 @@ jobs:
 #
       - name: Build Sphinx HTML documentation
         run: |
-          sphinx-build -M html docs src #docs/_build/html
-#          make html
-#        working-directory: docs
+          make html
+        working-directory: docs
 
       - name: List generated files
         run: |
@@ -49,10 +50,18 @@ jobs:
           ls -lha
           find ./docs/_build/html -type f
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/_build/html # The directory where Sphinx outputted the HTML files
-          # Note: The 'gh-pages' branch will be created automatically if it doesn't exist.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # Only run this job when pushing to the main branch
+    if: ${{ github.ref == 'refs/heads/main' }}
 
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: peaceiris/actions-gh-pages@v4 # Action to deploy to gh-pages branch
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: docs/_build/html
+        force_orphan: true
