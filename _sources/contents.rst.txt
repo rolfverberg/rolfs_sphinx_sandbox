@@ -7,4 +7,4 @@ Contents
    :titlesonly:
 
    installation
-   dev_guide
+   api_documentation
