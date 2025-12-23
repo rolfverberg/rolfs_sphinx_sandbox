@@ -39,7 +39,7 @@ jobs:
 #
       - name: Build Sphinx HTML documentation
         run: |
-          sphinx-build -M html docs docs/_build/html
+          sphinx-build -M html src docs/_build/html
 #          make html
 #        working-directory: docs
 
