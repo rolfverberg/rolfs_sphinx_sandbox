@@ -5,64 +5,24 @@ on:
     branches: ["main"] # Trigger on pushes to main
   workflow_dispatch:   # Allows manual triggers
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
+  pages:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install sphinx sphinx-autodoc2 myst-parser
-          #pip install python-docs-theme # Python Documentation theme
-          pip install sphinx-rtd-theme # Read the Docs theme
-          #pip install sphinx-argparse # When 'sphinxarg.ext' in extensions
-          pip install -r requirements.txt
-
-      - name: List files
-        run: |
-          pwd
-          ls -lha
-          ls -lha docs
-          find ./docs/_build/html -type f
-
-      - name: Build HTML
-        run: |
-          sphinx-build -E docs docs/_build/html
-          #sphinx-build -b html docs docs/_build/html -v
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'docs/_build/html'
-
-  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    - uses: actions/checkout@v3
+#    - name: Update docs configuration with version (tag) name
+#      run: |
+#        sed -i "s/PACKAGE_VERSION/${{ github.ref_name }}/" docs/conf.py
+#        sed -i "s/PACKAGE_VERSION/${{ github.ref_name }}/" docs/installation.md
+    - name: Build and deploy docs
+      id: deployment
+      uses: sphinx-notes/pages@v3
+      with:
+        checkout: false
 
