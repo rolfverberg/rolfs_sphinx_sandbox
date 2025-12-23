@@ -18,6 +18,7 @@ Rolf's Sphinx sandbox
 
 
 .. toctree::
+   :hidden:
    :caption: Reference Guide
 
    api_documentation
