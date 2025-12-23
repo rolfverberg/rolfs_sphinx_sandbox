@@ -32,7 +32,7 @@ jobs:
           pip install sphinx sphinx-autodoc2 myst-parser
           #pip install python-docs-theme # Python Documentation theme
           pip install sphinx-rtd-theme # Read the Docs theme
-          pip install sphinx-argparse # When 'sphinxarg.ext' in extensions
+          #pip install sphinx-argparse # When 'sphinxarg.ext' in extensions
           pip install -r requirements.txt
 
       - name: List files
@@ -40,10 +40,11 @@ jobs:
           pwd
           ls -lha
           ls -lha docs
+          find ./docs/_build/html -type f
 
       - name: Build HTML
         run: |
-          sphinx-build -E docs docs/_build/html -v
+          sphinx-build -E docs docs/_build/html
           #sphinx-build -b html docs docs/_build/html -v
 
       - name: Setup Pages
