@@ -36,12 +36,12 @@ jobs:
 
 #      - name: Generate .rst files with sphinx-apidoc
 #        run: sphinx-apidoc -o docs src
-
+#
       - name: Build Sphinx HTML documentation
         run: |
+          sphinx-build -M html docs docs/_build/html
 #          make html
 #        working-directory: docs
-          sphinx-build -M html docs docs/_build/html
 
       - name: List generated files
         run: |
