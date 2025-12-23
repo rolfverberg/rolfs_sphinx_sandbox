@@ -7,4 +7,4 @@ Contents
    :titlesonly:
 
    installation
-   modules
+   api_documentation
