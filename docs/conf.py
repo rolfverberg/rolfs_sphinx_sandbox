@@ -25,9 +25,10 @@ extensions = [
 #    'sphinxarg.ext'
     'sphinx.ext.githubpages',
 ]
-autodoc2_packages = ['../src']
+#autodoc_mock_imports = ['any_package_like_numpy_or_list_of_packages']
+autodoc2_packages = ['../src/']
 autodoc2_render_plugin = 'myst'
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+#exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 #source_suffix = ['.rst', '.md']
 templates_path = ['_templates']
 
