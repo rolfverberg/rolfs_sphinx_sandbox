@@ -26,7 +26,13 @@ extensions = [
     'sphinx.ext.githubpages',
 ]
 #autodoc_mock_imports = ['any_package_like_numpy_or_list_of_packages']
-autodoc2_packages = ['../src/*']
+autodoc2_packages = [
+    '../src/fitmultipeak.py',
+    '../src/fit.py',
+    '../src/general.py',
+    '../src/models.py',
+    '../src/processor.py',
+]
 autodoc2_render_plugin = 'myst'
 exclude_patterns = ['_build'] 
 source_suffix = ['.rst', '.md']
