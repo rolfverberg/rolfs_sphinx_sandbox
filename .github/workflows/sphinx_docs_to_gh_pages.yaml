@@ -43,8 +43,7 @@ jobs:
 
       - name: Build HTML
         run: |
-          make clean
-          sphinx-build docs docs/_build/html -v
+          sphinx-build -E docs docs/_build/html -v
           #sphinx-build -b html docs docs/_build/html -v
 
       - name: Setup Pages
