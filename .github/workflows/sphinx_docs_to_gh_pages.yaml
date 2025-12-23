@@ -33,10 +33,11 @@ jobs:
         run: pip install -e .
 
       - name: Generate .rst files with sphinx-apidoc
-        run: sphinx-apidoc -f -o docs src
+        run: sphinx-apidoc -o docs src
 
       - name: Build Sphinx HTML documentation
         run: |
+          make clean
           make html
         working-directory: ./docs
 
