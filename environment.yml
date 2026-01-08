@@ -10,7 +10,6 @@ dependencies:
   - pyyaml
   - asteval
   - astra-toolbox
-  - certif-pyspec
   - chess_scanparsers
   - fabio
   - flask
@@ -24,3 +23,5 @@ dependencies:
   - scipy
   - sympy
   - tomopy
+  - pip:
+    - certif-pyspec
