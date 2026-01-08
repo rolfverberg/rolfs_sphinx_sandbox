@@ -45,7 +45,7 @@ jobs:
           conda config --add channels hexrd
           conda config --show channels
           conda list
-          conda install hexrd
+          conda install hexrd==0.9.11
           conda config --remove channels hexrd
           # tomopy conflicts over pip
           conda config --show channels
