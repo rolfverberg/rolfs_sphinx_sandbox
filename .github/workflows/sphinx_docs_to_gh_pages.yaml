@@ -25,10 +25,11 @@ jobs:
       - name: Setup Miniconda environment
         uses: conda-incubator/setup-miniconda@v3
         with:
-          auto-update-conda: true
           python-version: 3.10
-          environment-file: environment.yml
           auto-activate-base: false
+          auto-update-conda: true
+          conda-remove-defaults: true
+          environment-file: environment.yml
           use-mamba: true
 
       - name: Display Python version

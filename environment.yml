@@ -2,7 +2,6 @@ name: CHAP_docs
 channels:
   - conda-forge
   - hexrd
-  - nodefaults
 dependencies:
   - python>=3.9,<3.11
   - numpy
@@ -10,7 +9,7 @@ dependencies:
   - pyyaml
   - asteval
   - astra-toolbox
-  - chess_scanparsers
+  - chess-scanparsers
   - fabio
   - flask
   - hexrd
