@@ -22,10 +22,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.10
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '>=3.9,<3.11'
+          python_requires: '>=3.9,<3.11'
 
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
@@ -42,16 +42,17 @@ jobs:
           pip install -r sphinx_requirements.txt
           pip install -r requirements.txt
           # hexrd not available over pip, needs hexrd channel
-          conda config --add channels conda-forge
-          conda config --append channels hexrd
-          conda config --show channels
+          #conda config --add channels conda-forge
+          #conda config --append channels hexrd
+          #conda config --show channels
           conda list
-          conda install hexrd==0.9.11
-          conda config --remove channels hexrd
+          conda install -c hexrd -c conda-forge hexrd==0.9.11
+          #conda config --remove channels hexrd
           # tomopy conflicts over pip
-          conda config --show channels
+          #conda config --show channels
           conda list
           conda install tomopy
+          conda list
 
 
       - name: Generate .rst files with sphinx-apidoc
