@@ -38,20 +38,20 @@ jobs:
           python -m pip install --upgrade pip
           python -c "import sys; print(sys.version)"
           pip install -r sphinx_requirements.txt
-          python -c "import sys; print(sys.version)"
-          pip install -r requirements.txt
-          python -c "import sys; print(sys.version)"
+          #python -c "import sys; print(sys.version)"
+          #pip install -r requirements.txt
           # hexrd not available over pip, needs hexrd channel
           #conda config --add channels conda-forge
           #conda config --append channels hexrd
           #conda config --show channels
           conda list
-          conda install -c hexrd -c conda-forge hexrd
           python -c "import sys; print(sys.version)"
+          conda install -c hexrd -c conda-forge hexrd
           #conda config --remove channels hexrd
           # tomopy conflicts over pip
           #conda config --show channels
           conda list
+          python -c "import sys; print(sys.version)"
           conda install tomopy
           conda list
 
@@ -60,6 +60,7 @@ jobs:
           grep version setup.py
           pip install -e .
           conda list
+          python -c "import sys; print(sys.version)"
 
       - name: Generate .rst files with sphinx-apidoc
         run: sphinx-apidoc --tocfile api_documentation -o docs src
