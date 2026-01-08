@@ -31,7 +31,9 @@ jobs:
           python-version: '3.10' #${{ matrix.python-version }}
 
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+        run: |
+          conda list
+          python -c "import sys; print(sys.version)"
 
       - name: Install dependencies
         run: |
@@ -44,6 +46,9 @@ jobs:
           #conda config --add channels conda-forge
           #conda config --append channels hexrd
           #conda config --show channels
+          conda list
+          python -c "import sys; print(sys.version)"
+          conda install -c conda-forge python=3.10
           conda list
           python -c "import sys; print(sys.version)"
           conda install -c hexrd -c conda-forge hexrd
