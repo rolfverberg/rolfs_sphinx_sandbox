@@ -21,7 +21,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        uses: actions/checkout@v4
 
       - name: Set up Python 3.10.19
         uses: actions/setup-python@v5
