@@ -32,7 +32,7 @@ jobs:
 
       - name: Display Python version
         run: |
-          conda list
+          conda list | grep python
           python -c "import sys; print(sys.version)"
 
       - name: Install dependencies
@@ -43,22 +43,11 @@ jobs:
           #python -c "import sys; print(sys.version)"
           #pip install -r requirements.txt
           # hexrd not available over pip, needs hexrd channel
-          #conda config --add channels conda-forge
-          #conda config --append channels hexrd
-          #conda config --show channels
-          conda list
-          python -c "import sys; print(sys.version)"
+          conda config --show channels
           conda install -c conda-forge python=3.10
-          conda list
-          python -c "import sys; print(sys.version)"
           conda install -c hexrd -c conda-forge hexrd
-          #conda config --remove channels hexrd
           # tomopy conflicts over pip
-          #conda config --show channels
-          conda list
-          python -c "import sys; print(sys.version)"
           conda install tomopy
-          conda list
 
       - name: Install package
         run: |
