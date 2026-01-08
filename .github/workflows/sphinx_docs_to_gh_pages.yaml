@@ -42,10 +42,11 @@ jobs:
           pip install -r sphinx_requirements.txt
           pip install -r requirements.txt
           # hexrd not available over pip, needs hexrd channel
-          conda config --add channels hexrd
+          conda config --add channels conda-forge
+          conda config --append channels hexrd
           conda config --show channels
           conda list
-          conda install hexrd==0.9.11
+          conda install -c hexrd -c conda-forge hexrd
           conda config --remove channels hexrd
           # tomopy conflicts over pip
           conda config --show channels
