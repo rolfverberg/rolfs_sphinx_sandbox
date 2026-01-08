@@ -27,7 +27,7 @@ jobs:
         with:
           auto-update-conda: true
           python-version: 3.10
-          environment-file: environment_3.10.19.yml
+          environment-file: environment.yml
           auto-activate-base: false
           use-mamba: true
 
