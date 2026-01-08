@@ -33,23 +33,21 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
 
-      - name: Install package
-        run: |
-          grep version setup.py
-          python -m pip install --upgrade pip
-          pip install -e .
-          conda list
-
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
+          python -c "import sys; print(sys.version)"
           pip install -r sphinx_requirements.txt
+          python -c "import sys; print(sys.version)"
           pip install -r requirements.txt
+          python -c "import sys; print(sys.version)"
           # hexrd not available over pip, needs hexrd channel
           #conda config --add channels conda-forge
           #conda config --append channels hexrd
           #conda config --show channels
           conda list
           conda install -c hexrd -c conda-forge hexrd
+          python -c "import sys; print(sys.version)"
           #conda config --remove channels hexrd
           # tomopy conflicts over pip
           #conda config --show channels
@@ -57,6 +55,11 @@ jobs:
           conda install tomopy
           conda list
 
+      - name: Install package
+        run: |
+          grep version setup.py
+          pip install -e .
+          conda list
 
       - name: Generate .rst files with sphinx-apidoc
         run: sphinx-apidoc --tocfile api_documentation -o docs src
