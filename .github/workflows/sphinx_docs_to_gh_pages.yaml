@@ -27,8 +27,8 @@ jobs:
         with:
           python-version: '3.10'
           environment-file: environment.yml
-          #auto-activate-base: true
-          #activate-environment: sphinx
+          auto-activate-base: true
+          activate-environment: sphinx
           conda-remove-defaults: true
           use-mamba: true
 
