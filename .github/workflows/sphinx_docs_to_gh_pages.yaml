@@ -41,6 +41,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          conda init
           conda activate sphinx
           python --version
           python -c "import sys; print(sys.version)"
