@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>fitmultipeak module &mdash; rolfs_sphinx_sandbox  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
@@ -50,7 +50,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="api_documentation.html">API documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fit.html">fit module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">fitmultipeak module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fitmultipeak module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fitmultipeak.create_data"><code class="docutils literal notranslate"><span class="pre">create_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fitmultipeak.fit"><code class="docutils literal notranslate"><span class="pre">fit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fitmultipeak.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fitmultipeak.ran_uni"><code class="docutils literal notranslate"><span class="pre">ran_uni()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="general.html">general module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html">models module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="processor.html">processor module</a></li>
@@ -82,8 +88,84 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="fitmultipeak-module">
-<h1>fitmultipeak module<a class="headerlink" href="#fitmultipeak-module" title="Link to this heading"></a></h1>
+  <section id="module-fitmultipeak">
+<span id="fitmultipeak-module"></span><h1>fitmultipeak module<a class="headerlink" href="#module-fitmultipeak" title="Link to this heading"></a></h1>
+<p>File       : fitmultipeak.py
+Author     : Rolf Verberg
+Description: Test program to fit a multipeak spectrum</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="fitmultipeak.create_data">
+<span class="sig-name descname"><span class="pre">create_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peak_pars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trend_pars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_peak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fitmultipeak.create_data" title="Link to this definition"></a></dt>
+<dd><p>Create the data to fit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>peak_pars</strong> (<em>dict</em>) – Peak parameters and their stdev.</p></li>
+<li><p><strong>trend_pars</strong> (<em>dict</em><em>, </em><em>optional</em>) – Treadline parameters, default to no trendline.</p></li>
+<li><p><strong>num_peak</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of peaks, defaults to <cite>3</cite>.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – Random generator initial seed, default to <cite>1</cite>.</p></li>
+<li><p><strong>scale</strong> (<em>float</em><em>, </em><em>optional</em>) – Stdev for y-coordinate noise, defaults to <cite>0.05</cite>.</p></li>
+<li><p><strong>no_noise</strong> (<em>bool</em><em>, </em><em>optional</em>) – No noise is added if set, defaults to <cite>False</cite>.</p></li>
+<li><p><strong>num</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of data points, defaults to <cite>1000</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The x and y coordinates and the nominal peak center
+positions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray, np.ndarray, list[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fitmultipeak.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fitmultipeak.fit" title="Link to this definition"></a></dt>
+<dd><p>Fit a spectrum with a multipeak Gaussian function and optionally
+a quadratic trendline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x-coordinates.</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – y-coordinates.</p></li>
+<li><p><strong>centers</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – Nominal peak center positions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The fit result.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CHAP.utils.fit.Fit</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fitmultipeak.main">
+<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fitmultipeak.main" title="Link to this definition"></a></dt>
+<dd><p>Main function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fitmultipeak.ran_uni">
+<span class="sig-name descname"><span class="pre">ran_uni</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fitmultipeak.ran_uni" title="Link to this definition"></a></dt>
+<dd><p>Create a random number distributed in the range <cite>[-0.5, 0.5]</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>set_seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Initialial seed for the random number generator
+if set.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Random number distributed in <cite>[-0.5, 0.5]</cite> if set_seed
+is <cite>None</cite>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[None, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
