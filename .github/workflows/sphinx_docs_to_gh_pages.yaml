@@ -43,7 +43,6 @@ jobs:
 
       - name: Display Python version
         run: |
-          conda activate test
           conda list
           python --version
           python -c "import sys; print(sys.version)"
