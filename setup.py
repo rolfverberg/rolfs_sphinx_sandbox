@@ -24,10 +24,10 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.9,<3.11',
+    python_requires='>=3.10',
     install_requires=[
-        'numpy==1.26.4',
-        'pydantic==2.7.3',
-        'pyyaml==6.0.3',
+        'numpy',
+        'pydantic',
+        'pyyaml',
     ],
 )
