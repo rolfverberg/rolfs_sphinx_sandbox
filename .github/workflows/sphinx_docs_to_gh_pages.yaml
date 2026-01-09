@@ -60,6 +60,7 @@ jobs:
 
       - name: Generate .rst files with sphinx-apidoc
         run: |
+          conda init
           conda activate sphinx
           sphinx-apidoc --tocfile api_documentation -o docs src
 
