@@ -1,4 +1,4 @@
-name: CHAP_docs
+name: test
 channels:
   - conda-forge
   - hexrd
