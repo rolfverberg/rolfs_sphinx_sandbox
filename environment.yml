@@ -22,6 +22,10 @@ dependencies:
   - scipy
   - sympy
   - tomopy
+  - sphinx
+  - sphinx-math-dollar
+  - sphinx-rtd-theme
+  - myst-parser
   - pip:
     - certif-pyspec
     - chess-scanparsers
