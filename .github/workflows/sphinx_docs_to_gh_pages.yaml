@@ -22,24 +22,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Miniforge
-        uses: conda-incubator/setup-miniconda@v3
-        with:
-          miniforge-variant: Mambaforge
-          miniforge-version: latest
-          python-version: 3.10
-          environment-file: environment.yml
-          use-mamba: true
-          auto-activate-base: false
-#      - name: Setup Miniconda environment
+#      - name: Setup Miniforge
 #        uses: conda-incubator/setup-miniconda@v3
 #        with:
+#          miniforge-variant: Mambaforge
+#          miniforge-version: latest
 #          python-version: 3.10
-#          auto-activate-base: false
-#          auto-update-conda: true
-#          conda-remove-defaults: true
 #          environment-file: environment.yml
 #          use-mamba: true
+#          auto-activate-base: false
+      - name: Setup Miniconda environment
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          python-version: '3.10'
+          auto-activate-base: 'false'
+          auto-update-conda: 'true'
+          conda-remove-defaults: 'true'
+          environment-file: 'environment.yml'
+          use-mamba: 'true'
 
       - name: Display Python version
         run: |
