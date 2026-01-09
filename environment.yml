@@ -9,7 +9,6 @@ dependencies:
   - pyyaml
   - asteval
   - astra-toolbox
-  - chess-scanparsers
   - fabio
   - flask
   - hexrd
@@ -17,6 +16,7 @@ dependencies:
   - matplotlib
   - mpi4py
   - nexpy
+  - pip
   - pyfai
   - scikit-image
   - scipy
@@ -24,3 +24,4 @@ dependencies:
   - tomopy
   - pip:
     - certif-pyspec
+    - chess-scanparsers
