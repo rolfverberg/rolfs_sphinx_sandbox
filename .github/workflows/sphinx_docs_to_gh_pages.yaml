@@ -42,7 +42,6 @@ jobs:
       - name: Install dependencies
         shell: bash -l {0}
         run: |
-          #conda init
           conda activate sphinx
           python -m pip install --upgrade pip
           pip install sphinx
@@ -62,12 +61,13 @@ jobs:
       - name: Generate .rst files with sphinx-apidoc
         shell: bash -l {0}
         run: |
-          #conda init
           conda activate sphinx
           sphinx-apidoc --tocfile api_documentation -o docs src
 
       - name: Build Sphinx HTML documentation
+        shell: bash -l {0}
         run: |
+          conda activate sphinx
           make clean
           make html
         working-directory: ./docs
