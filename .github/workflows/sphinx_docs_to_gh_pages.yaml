@@ -61,8 +61,8 @@ jobs:
 
       - name: Generate .rst files with sphinx-apidoc
         run: |
-          conda init
-          conda activate sphinx
+          #conda init
+          #conda activate sphinx
           sphinx-apidoc --tocfile api_documentation -o docs src
 
       - name: Build Sphinx HTML documentation
@@ -72,7 +72,7 @@ jobs:
         working-directory: ./docs
 
       - name: List generated files
-        shell: bash -l {0}
+        #shell: bash -l {0}
         run: |
           pwd
           ls -lha
