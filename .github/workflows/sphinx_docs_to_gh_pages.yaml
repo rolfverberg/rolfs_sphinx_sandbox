@@ -37,7 +37,7 @@ jobs:
         run: |
           conda list
           conda env list
-          conda ativate test
+          conda activate test
           conda list
           python --version
           python -c "import sys; print(sys.version)"
