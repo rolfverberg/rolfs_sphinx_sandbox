@@ -32,13 +32,6 @@ jobs:
           conda-remove-defaults: true
           use-mamba: true
 
-      - name: Display Python version
-        run: |
-          conda list
-          conda env list
-          python --version
-          python -c "import sys; print(sys.version)"
-
       - name: Install dependencies
         shell: bash -l {0}
         run: |
@@ -48,12 +41,10 @@ jobs:
           pip install sphinx-math-dollar
           pip install sphinx-rtd-theme
           pip install myst-parser
-          conda list
 
       - name: Install package
         shell: bash -l {0}
         run: |
-          grep version setup.py
           conda activate sphinx
           pip install -e .
           conda list
