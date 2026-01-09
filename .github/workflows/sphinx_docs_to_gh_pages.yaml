@@ -26,11 +26,11 @@ jobs:
         uses: conda-incubator/setup-miniconda@v3
         with:
           python-version: '3.10'
-          environment-file: 'environment.yml'
-          auto-activate-base: 'false'
-          auto-activate-environment: sphinx
-          conda-remove-defaults: 'true'
-          use-mamba: 'true'
+          environment-file: environment.yml
+          auto-activate-base: false
+          activate-environment: sphinx
+          conda-remove-defaults: true
+          use-mamba: true
 
       - name: Display Python version
         run: |
