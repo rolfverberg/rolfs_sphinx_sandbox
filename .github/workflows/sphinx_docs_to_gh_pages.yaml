@@ -27,8 +27,8 @@ jobs:
         with:
           python-version: '3.10'
           environment-file: environment.yml
-          auto-activate-base: true
-          activate-environment: sphinx
+          #auto-activate-base: true
+          #activate-environment: sphinx
           conda-remove-defaults: true
           use-mamba: true
 
@@ -40,29 +40,30 @@ jobs:
           python -c "import sys; print(sys.version)"
 
       - name: Install dependencies
+        shell: bash -l {0}
         run: |
           #conda init
-          #conda activate sphinx
-          python --version
-          python -c "import sys; print(sys.version)"
-          conda list
+          conda activate sphinx
           python -m pip install --upgrade pip
           pip install sphinx
           pip install sphinx-math-dollar
           pip install sphinx-rtd-theme
           pip install myst-parser
+          conda list
 
       - name: Install package
+        shell: bash -l {0}
         run: |
           grep version setup.py
+          conda activate sphinx
           pip install -e .
           conda list
-          python -c "import sys; print(sys.version)"
 
       - name: Generate .rst files with sphinx-apidoc
+        shell: bash -l {0}
         run: |
           #conda init
-          #conda activate sphinx
+          conda activate sphinx
           sphinx-apidoc --tocfile api_documentation -o docs src
 
       - name: Build Sphinx HTML documentation
@@ -72,7 +73,6 @@ jobs:
         working-directory: ./docs
 
       - name: List generated files
-        #shell: bash -l {0}
         run: |
           pwd
           ls -lha
