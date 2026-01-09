@@ -37,6 +37,7 @@ jobs:
         run: |
           conda list
           conda env list
+          conda init
           conda activate test
           conda list
           python --version
