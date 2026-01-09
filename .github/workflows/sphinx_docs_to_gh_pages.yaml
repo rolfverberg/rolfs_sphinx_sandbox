@@ -43,8 +43,8 @@ jobs:
 
       - name: Display Python version
         run: |
-          conda info --envs
-          conda list | grep python
+          conda activate test
+          conda list
           python --version
           python -c "import sys; print(sys.version)"
 
@@ -55,7 +55,6 @@ jobs:
           pip install sphinx-math-dollar
           pip install sphinx-rtd-theme
           pip install myst-parser
-          pip install certif-pyspec
 
       - name: Install package
         run: |
